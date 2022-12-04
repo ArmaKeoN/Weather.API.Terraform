@@ -5,13 +5,6 @@ terraform {
       version = "1.29.4"
     }
   }
-  cloud {
-    organization = "jonahlozano03"
-
-    workspaces {
-      name = "example-workspace"
-    }
-  }
 }
 
 # Configure the Linode Provider
