@@ -19,29 +19,29 @@ resource "linode_instance" "weatherApiInstance" {
   region    = "us-central"
   type      = "g6-nanode-1"
   root_pass = var.root_pass
-  provisioner "file" {
-    source      = "setup_script.sh"
-    destination = "/tmp/setup_script.sh"
-    connection {
-      type     = "ssh"
-      host     = self.ip_address
-      user     = "root"
-      password = var.root_pass
-    }
-  }
-  provisioner "remote-exec" {
-    inline = [
-      "chmod +x /tmp/setup_script.sh",
-      "/tmp/setup_script.sh",
-      "sleep 1"
-    ]
-    connection {
-      type     = "ssh"
-      host     = self.ip_address
-      user     = "root"
-      password = var.root_pass
-    }
-  }
+  #provisioner "file" {
+  #  source      = "setup_script.sh"
+  #  destination = "/tmp/setup_script.sh"
+  #  connection {
+  #    type     = "ssh"
+  #    host     = self.ip_address
+  #    user     = "root"
+  #    password = var.root_pass
+  #  }
+  #}
+  #provisioner "remote-exec" {
+  #  inline = [
+  #    "chmod +x /tmp/setup_script.sh",
+  #    "/tmp/setup_script.sh",
+  #    "sleep 1"
+  #  ]
+  #  connection {
+  #    type     = "ssh"
+  #    host     = self.ip_address
+  #    user     = "root"
+  #    password = var.root_pass
+  #  }
+  #}
 }
 
 # Create a Domain
@@ -67,7 +67,7 @@ resource "linode_firewall" "weatherApiFirewall" {
     label    = "allow-http"
     action   = "ACCEPT"
     protocol = "TCP"
-    ports    = "22, 80, 8000, 8080"
+    ports    = "22, 80, 8080"
     ipv4     = ["0.0.0.0/0"]
     ipv6     = ["ff00::/8"]
   }
