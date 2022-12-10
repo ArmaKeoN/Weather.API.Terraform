@@ -19,7 +19,6 @@ resource "linode_instance" "weatherApiInstance" {
   region    = "us-central"
   type      = "g6-nanode-1"
   root_pass = var.root_pass
-  tags      = ["LVM"]
 }
 
 # Create a Domain
